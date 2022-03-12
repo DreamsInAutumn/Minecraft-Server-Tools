@@ -87,4 +87,5 @@ function _main {
 }
 
 _main;
+
 exit $exitCode;
