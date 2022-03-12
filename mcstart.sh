@@ -8,6 +8,7 @@
 	version=0.2.a
 	configFile=mcstart.conf;
 	arg1=$1;
+	exitCode=0;
 
 function readConf() {
  # Read variable passed as argument from config file
@@ -34,6 +35,7 @@ function displayHeader {
 }
 
 function displayFooter {
+	echo "Restart Attempts Remaining : $restartCount"
 	echo "Sleeping for $restartTimer seconds"
 	echo "[CTRL + C] to exit before restart..."
 }
@@ -61,6 +63,13 @@ function _main {
 				do
 					displayHeader;
 					startServer;
+					readConf loopExit;
+					echo Loop Exit : $loopExit;
+					if [ $loopExit == true ]; then
+						echo "Forcefully exiting restart loop"
+						exitCode=1;
+						exit $exitCode;
+					fi
 					displayFooter;
 					sleep $restartTimer;
 					restartCount=$(($restartCount-1))
@@ -78,4 +87,4 @@ function _main {
 }
 
 _main;
-exit 0;
+exit $exitCode;
