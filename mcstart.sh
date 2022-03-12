@@ -64,7 +64,6 @@ function _main {
 					displayHeader;
 					startServer;
 					readConf loopExit;
-					echo Loop Exit : $loopExit;
 					if [ $loopExit == true ]; then
 						echo "Forcefully exiting restart loop"
 						exitCode=1;
