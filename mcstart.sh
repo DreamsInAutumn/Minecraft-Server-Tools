@@ -5,7 +5,7 @@
 # project home: https://github.com/DreamsInAutumn/Minecraft-Server-Tools
 
 # Declare Globals
-	version=0.2.a
+	version=0.3.a
 	configFile=mcstart.conf;
 	arg1=$1;
 	exitCode=0;
